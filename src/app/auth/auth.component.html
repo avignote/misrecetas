@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 offset-md-3">
+      <div *ngIf="isLoading" class="text-center">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+      <form (submit)="onSubmit()" [formGroup]="formulario" *ngIf="!isLoading">
+        <div class="form-group">
+          <label for="username">Email</label>
+          <input
+            type="email"
+            formControlName="username"
+            name="username"
+            id="username"
+            autocomplete="off"
+            class="form-control"
+            email
+          />
+          <small *ngIf="!username.valid && username.touched" class="text-danger"
+            >Debe rellenar el Email de la Cuenta</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            autocomplete="off"
+            formControlName="password"
+            name="password"
+            id="password"
+            class="form-control"
+          />
+          <small *ngIf="!password.valid && password.touched" class="text-danger">
+            Debe rellenar el password de la Cuenta
+          </small>
+        </div>
+        <div class="mb-2">
+          <button class="btn btn-info" [disabled]="!formulario.valid">
+            {{ loginMode ? 'Login' : 'Create Account' }}
+          </button>
+        </div>
+        <div class="text-right">
+          <button type="button" class="btn btn-outline-info" (click)="loginMode = !loginMode">
+            {{ !loginMode ? 'Login' : 'Create Account' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--
+  <app-alert [message]="error" (closeModal)="error = ''" *ngIf="error"></app-alert>
+  -->
+  <ng-gemplate appPlaceholder></ng-gemplate>
+
+  <div class="alert alert-danger" *ngIf="error">
+    <p>{{ error }}</p>
+    <button class="btn btn-danger" type="button" (click)="error = ''">Ok</button>
+  </div>
+  <div class="alert alert-success" *ngIf="signCorrect">
+    <p>Perfect!!!!</p>
+    <button class="btn btn-success" type="button" (click)="signCorrect = false">Ok</button>
+  </div>
+</div>

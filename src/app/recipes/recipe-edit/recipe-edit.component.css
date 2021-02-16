@@ -1,0 +1,9 @@
+input.ng-invalid,
+textarea.ng-invalid {
+  border: 1px solid red;
+}
+
+label,
+.label {
+  font-weight: bold;
+}

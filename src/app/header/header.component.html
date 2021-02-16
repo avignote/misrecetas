@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-5">
+  <div class="container">
+    <a class="navbar-brand" href="#">My Recipes</a>
+    <div></div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0" *ngIf="userAuthenticated">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/recipes" routerLinkActive="active">Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/shopping-list" routerLinkActive="active"
+            >Shopping List</a
+          >
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right mb-lg-0" *ngIf="userAuthenticated">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            (click)="openDropdown = !openDropdown"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Manage Recipes
+          </a>
+          <ul class="dropdown-menu" [class.show]="openDropdown" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" style="cursor: pointer" (click)="saveOnServer()"
+                >Save Recipes On Server</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" style="cursor: pointer" (click)="fecthFromServer()"
+                >Fetch Recipes From Server</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav mb-2 mb-lg-0 ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" (click)="logout()"
+            >{{ userAuthenticated ? 'Logout' : 'Login' }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

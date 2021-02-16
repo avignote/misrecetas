@@ -1,0 +1,16 @@
+<div class="list-group-item clearfix">
+  <div class="row no-gutters justify-content-between">
+    <div class="col-md-10 pull-left">
+      <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
+      <p class="list-group-item-text">{{ recipe.description }}</p>
+    </div>
+    <div class="col-md-2 pull-right text-right align-self-center">
+      <img
+        [src]="recipe.imagePath"
+        alt="{{ recipe.name }}"
+        class="img-responsive"
+        style="max-height: 50px"
+      />
+    </div>
+  </div>
+</div>

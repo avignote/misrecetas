@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+app-recipe-item.active div.list-group-item {
+  background-color: blue;
+  color: white;
+}
