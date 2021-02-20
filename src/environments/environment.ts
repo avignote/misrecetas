@@ -5,6 +5,10 @@
 export const environment = {
   production: false,
   firebaseAPIKey: 'AIzaSyArpfa9EkXH1IPy3bMkxW72l-QBkqhpzGY',
+  stripe: {
+    public_key:
+      'pk_test_51IMGM2LuQoiTCGh89lgTSYME5yMJVGR4DS3OSisbUkx7wcqeUmrvLS1zef02zqvIDX9JxaNTZXztvqVXVhzAXPOM00ywwy4gIU',
+  },
 };
 
 /*

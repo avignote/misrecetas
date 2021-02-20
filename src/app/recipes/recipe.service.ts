@@ -4,7 +4,9 @@ import { Recipe } from './recipe.model';
 import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
 import { Subject } from 'rxjs';
 import { DataStorageService } from '../shared/data-storage.service';
-
+import { Store } from '@ngrx/store';
+import * as ShoppingListActions from '../shopping-list/store/shopping-list.actions';
+import * as fromShoppingList from '../shopping-list/store/shopping-list.reducer';
 @Injectable({
   providedIn: 'root',
 })
@@ -43,7 +45,8 @@ export class RecipeService {
 
   constructor(
     private shoppingListService: ShoppingListService,
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
+    private store: Store<fromShoppingList.AppStateType>
   ) {}
 
   //Almacenamos en el Servidor las recetas contenidas en memoria
@@ -99,7 +102,11 @@ export class RecipeService {
 
   //Añade los ingredientes pasados a la lista de compra
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.shoppingListService.addIngredients(ingredients);
+    //Ya no usamos el servicio de shoppingListService para almacenar los datos, sino que usamos NgRx Store
+    //this.shoppingListService.addIngredients(ingredients);
+
+    //Llamamos al dispatch con la acción para añadir el listado de ingredienteS
+    this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
   }
 
   //borra una receta de la memoria

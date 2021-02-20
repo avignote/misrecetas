@@ -1,13 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>MisRecetas</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>MisRecetas</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- Añadimos la librería de Stripe-->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Inicializamos stripe añadiendo la clave pública de nuestra cuenta Stripe -->
+    <script>
+      //Inicializamos la librería Stripe
+      const stripe = Stripe(
+        'pk_test_51IMGM2LuQoiTCGh89lgTSYME5yMJVGR4DS3OSisbUkx7wcqeUmrvLS1zef02zqvIDX9JxaNTZXztvqVXVhzAXPOM00ywwy4gIU'
+      );
+      //Obtenemos la variable que contendrá el recuadro de stripe
+      const elements = stripe.elements();
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>

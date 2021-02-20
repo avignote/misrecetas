@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-
+  asdafsdfasd
   <div class="row">
     <div class="col">{{ recipeSelected.description }}</div>
   </div>
@@ -45,6 +45,19 @@
           {{ ingredient.name }} - {{ ingredient.amount }}
         </li>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h1>Pago</h1>
+    <div class="credit-card w-100">
+      <div>
+        <div #cardInfo></div>
+        <div class="error text-center" *ngIf="cardError">{{ cardError }}</div>
+      </div>
+      <button (click)="payProduct()" class="btn btn-success">Pagar</button>
     </div>
   </div>
 </div>
